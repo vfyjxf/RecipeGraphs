@@ -1,14 +1,12 @@
 package com.github.vfyjxf.recipegraphs.mixin;
 
 import mezz.jei.gui.recipes.RecipeLayout;
-import mezz.jei.gui.recipes.RecipesGui;
+import mezz.jei.ingredients.RegisteredIngredients;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-import java.util.List;
-
-@Mixin(value = RecipesGui.class, remap = false)
-public interface RecipesGuiAccessor {
+@Mixin(value = RecipeLayout.class, remap = false)
+public interface RecipeLayoutAccessor {
     @Accessor
-    List<RecipeLayout<?>> getRecipeLayouts();
+    RegisteredIngredients getRegisteredIngredients();
 }

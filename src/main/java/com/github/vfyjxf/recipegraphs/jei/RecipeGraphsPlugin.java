@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 @JeiPlugin
-public class RecipeDiagramsPlugin implements IModPlugin {
+public class RecipeGraphsPlugin implements IModPlugin {
     @Override
     public @NotNull ResourceLocation getPluginUid() {
         return new ResourceLocation("recipetree", "jei");
