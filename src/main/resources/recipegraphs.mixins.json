@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8.2",
+  "package": "com.github.vfyjxf.recipegraphs.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "MixinRecipeLayout"
+  ],
+  "mixins": [
+    "RecipesGuiAccessor"
+  ]
+}
