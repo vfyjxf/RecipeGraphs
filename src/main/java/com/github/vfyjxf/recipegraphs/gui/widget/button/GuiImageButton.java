@@ -2,6 +2,7 @@ package com.github.vfyjxf.recipegraphs.gui.widget.button;
 
 import com.github.vfyjxf.recipegraphs.api.gui.texture.IGuiTexture;
 import com.github.vfyjxf.recipegraphs.gui.texture.GraphTextures;
+import com.github.vfyjxf.recipegraphs.gui.texture.ResourceNineSliceTexture;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.gui.elements.DrawableNineSliceTexture;
@@ -41,7 +42,7 @@ public class GuiImageButton extends Button {
             Minecraft minecraft = Minecraft.getInstance();
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             boolean hovered = isMouseOver(mouseX, mouseY);
-            DrawableNineSliceTexture texture = GraphTextures.getInstance().getButtonForState(this.active, hovered);
+            ResourceNineSliceTexture texture = GraphTextures.getInstance().getButtonForState(this.active, hovered);
             texture.draw(poseStack, this.x, this.y, this.width, this.height);
             this.renderBg(poseStack, minecraft, mouseX, mouseY);
 

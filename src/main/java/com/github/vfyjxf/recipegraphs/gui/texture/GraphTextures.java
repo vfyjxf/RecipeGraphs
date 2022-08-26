@@ -16,10 +16,22 @@ public class GraphTextures {
         return instance;
     }
 
+    private final ResourceNineSliceTexture slotBackground;
+    private final ResourceNineSliceTexture buttonDisabled;
+    private final ResourceNineSliceTexture buttonEnabled;
+    private final ResourceNineSliceTexture buttonHighlight;
+    private final HighResolutionTexture graphIcon;
+
     public GraphTextures(GraphTextureManager textureManager) {
         this.textureManager = textureManager;
         {
-
+            this.slotBackground = registerNineSliceGuiSprite("slot_background", 64, 64, 6, 6, 6, 6);
+            this.buttonDisabled = registerNineSliceGuiSprite("button_disabled", 20, 20, 6, 6, 6, 6);
+            this.buttonEnabled = registerNineSliceGuiSprite("button_enabled", 20, 20, 6, 6, 6, 6);
+            this.buttonHighlight = registerNineSliceGuiSprite("button_highlight", 20, 20, 6, 6, 6, 6);
+            ResourceTexture graphIcon = registerGuiSprite("icons/diagram_icon", 32, 32)
+                    .trim(1, 2, 1, 1);
+            this.graphIcon = new HighResolutionTexture(graphIcon, 4);
         }
         instance = this;
     }
@@ -40,4 +52,37 @@ public class GraphTextures {
         return new ResourceNineSliceTexture(textureManager, location, width, height, left, right, top, bottom);
     }
 
+    public ResourceNineSliceTexture getButtonForState(boolean enabled, boolean hovered) {
+        if (!enabled) {
+            return buttonDisabled;
+        } else if (hovered) {
+            return buttonHighlight;
+        } else {
+            return buttonEnabled;
+        }
+    }
+
+    public GraphTextureManager getTextureManager() {
+        return textureManager;
+    }
+
+    public ResourceNineSliceTexture getSlotBackground() {
+        return slotBackground;
+    }
+
+    public ResourceNineSliceTexture getButtonDisabled() {
+        return buttonDisabled;
+    }
+
+    public ResourceNineSliceTexture getButtonEnabled() {
+        return buttonEnabled;
+    }
+
+    public ResourceNineSliceTexture getButtonHighlight() {
+        return buttonHighlight;
+    }
+
+    public HighResolutionTexture getGraphIcon() {
+        return graphIcon;
+    }
 }

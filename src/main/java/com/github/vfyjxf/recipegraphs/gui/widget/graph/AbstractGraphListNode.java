@@ -1,7 +1,9 @@
 package com.github.vfyjxf.recipegraphs.gui.widget.graph;
 
+import com.github.vfyjxf.recipegraphs.api.gui.texture.IGuiTexture;
 import com.github.vfyjxf.recipegraphs.api.gui.widget.IGraphListNode;
 import com.github.vfyjxf.recipegraphs.gui.widget.CycleTimer;
+import org.eclipse.elk.graph.ElkNode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -15,13 +17,8 @@ public abstract class AbstractGraphListNode<T> extends AbstractGraphNode impleme
     protected List<T> contents;
     protected boolean isFocus;
 
-    public AbstractGraphListNode(int posX, int posY, int width, int height, String nodeName, List<T> contents) {
-        super(posX, posY, width, height, nodeName);
-        this.contents = contents;
-    }
-
-    public AbstractGraphListNode(int posX, int posY, int width, int height, List<T> contents) {
-        super(posX, posY, width, height);
+    public AbstractGraphListNode(ElkNode elkGraph, int width, int height, String nodeName, IGuiTexture background, List<T> contents) {
+        super(elkGraph, width, height, nodeName, background);
         this.contents = contents;
     }
 

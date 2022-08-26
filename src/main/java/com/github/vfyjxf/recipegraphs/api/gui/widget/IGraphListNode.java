@@ -1,5 +1,7 @@
 package com.github.vfyjxf.recipegraphs.api.gui.widget;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public interface IGraphListNode<T> extends IGraphContentNode<T> {
@@ -10,6 +12,6 @@ public interface IGraphListNode<T> extends IGraphContentNode<T> {
 
     List<T> getContents();
 
-    void setContents(List<T> contents);
+    void setContents(@NotNull List<T> contents);
 
 }

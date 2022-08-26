@@ -4,6 +4,7 @@ import com.github.vfyjxf.recipegraphs.mixin.RecipesGuiAccessor;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.*;
+import mezz.jei.api.runtime.IIngredientManager;
 import mezz.jei.api.runtime.IJeiRuntime;
 import mezz.jei.api.runtime.IRecipesGui;
 import mezz.jei.gui.recipes.RecipeLayout;
@@ -14,6 +15,9 @@ import java.util.List;
 
 @JeiPlugin
 public class RecipeGraphsPlugin implements IModPlugin {
+
+    public static IIngredientManager ingredientManager;
+
     @Override
     public @NotNull ResourceLocation getPluginUid() {
         return new ResourceLocation("recipetree", "jei");
@@ -71,7 +75,7 @@ public class RecipeGraphsPlugin implements IModPlugin {
 
     @Override
     public void onRuntimeAvailable(@NotNull IJeiRuntime jeiRuntime) {
-        IModPlugin.super.onRuntimeAvailable(jeiRuntime);
+        ingredientManager = jeiRuntime.getIngredientManager();
     }
 
     public static List<RecipeLayout<?>> getRecipeLayouts(IRecipesGui recipesGui) {
