@@ -8,6 +8,8 @@
   ],
   "mixins": [
     "RecipeLayoutAccessor",
-    "RecipesGuiAccessor"
+    "RecipeLayoutBuilderAccessor",
+    "RecipesGuiAccessor",
+    "RecipeSlotBuilderAccessor"
   ]
 }

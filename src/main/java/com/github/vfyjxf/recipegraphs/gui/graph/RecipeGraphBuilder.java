@@ -83,6 +83,7 @@ public class RecipeGraphBuilder {
                 .map(type -> supplier.getIngredientStream(type, RecipeIngredientRole.OUTPUT).toList())
                 .flatMap(Collection::stream)
                 .toList();
+        //We will start counting from this Node.
         IGraphListNode<?> targetListNode;
         if (outputTypes.size() > 1) {
             targetListNode = graphFactory.createMixedListNode(elkGraph, 32, 32, textures.getGraphIcon(), outputs);
@@ -90,7 +91,11 @@ public class RecipeGraphBuilder {
             targetListNode = graphFactory.createListNode(elkGraph, 32, 32, textures.getGraphIcon(), (List<T>) outputs, (IIngredientType<T>) outputTypes.get(0));
         }
 
+
+
         return widgets;
     }
+
+
 
 }
