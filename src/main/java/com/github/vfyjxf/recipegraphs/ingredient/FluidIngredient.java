@@ -16,11 +16,6 @@ public class FluidIngredient extends AbstractIngredient<Fluid> {
         this.compoundTag = fluidStack.getTag();
     }
 
-    public FluidIngredient(@NotNull FluidStack fluidStack) {
-        super(fluidStack.getFluid(), fluidStack.getAmount());
-        this.compoundTag = fluidStack.getTag();
-    }
-
     @Override
     public @Nullable CompoundTag getTag() {
         return compoundTag;

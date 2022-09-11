@@ -12,10 +12,6 @@ public class FluidTagContent extends AbstractTagContent<Fluid> {
         super(tagKey, amount, percent);
     }
 
-    public FluidTagContent(TagKey<Fluid> tagKey, long amount) {
-        super(tagKey, amount);
-    }
-
     public FluidTagContent(IGraphTag<Fluid> graphTag) {
         super(graphTag);
     }

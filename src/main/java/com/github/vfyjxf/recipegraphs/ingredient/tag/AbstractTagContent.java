@@ -18,10 +18,6 @@ public abstract class AbstractTagContent<T> implements IGraphTag<T> {
         this.percent = percent;
     }
 
-    public AbstractTagContent(TagKey<T> tagKey, long amount) {
-        this(tagKey, amount, 1000);
-    }
-
     public AbstractTagContent(IGraphTag<T> graphTag) {
         this(graphTag.getTagKey(), graphTag.getAmount(), graphTag.getPercent());
     }

@@ -1,6 +1,8 @@
 package com.github.vfyjxf.recipegraphs.gui.graph;
 
+import com.github.vfyjxf.recipegraphs.api.gui.IGraphBuilder;
 import com.github.vfyjxf.recipegraphs.api.gui.widget.IGraphListNode;
+import com.github.vfyjxf.recipegraphs.api.gui.widget.IGraphNode;
 import com.github.vfyjxf.recipegraphs.gui.GraphFactory;
 import com.github.vfyjxf.recipegraphs.gui.texture.GraphTextures;
 import com.github.vfyjxf.recipegraphs.mixin.RecipeLayoutAccessor;
@@ -28,11 +30,10 @@ import java.util.List;
  * Output -> inputs -> catalyst -> the input of inputs
  * and a loop
  */
-public class RecipeGraphBuilder {
+public class JeiRecipeGraphBuilder extends AbstractGraphBuilder<RecipeLayout<?>> {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private RecipeLayout<?> recipeLayout;
     private RegisteredIngredients registeredIngredients;
     private final GraphTextures textures;
     private final IIngredientManager ingredientManager;
@@ -40,32 +41,35 @@ public class RecipeGraphBuilder {
     private IGraphLayoutEngine layoutEngine;
     private ElkNode elkGraph;
 
-    public RecipeGraphBuilder(IIngredientManager ingredientManager) {
+    public JeiRecipeGraphBuilder(IIngredientManager ingredientManager) {
         this.ingredientManager = ingredientManager;
         this.graphFactory = new GraphFactory(ingredientManager);
         this.textures = GraphTextures.getInstance();
 
     }
 
-    public RecipeGraphBuilder setRecipe(RecipeLayout<?> recipeLayout, IIngredientManager ingredientManager) {
-        this.recipeLayout = recipeLayout;
-        this.registeredIngredients = ((RecipeLayoutAccessor) recipeLayout).getRegisteredIngredients();
+
+    @Override
+    public IGraphBuilder<RecipeLayout<?>> setRootValue(RecipeLayout<?> rootValue) {
+        super.setRootValue(rootValue);
+        this.registeredIngredients = ((RecipeLayoutAccessor) rootValue).getRegisteredIngredients();
         return this;
     }
 
-    public RecipeGraphBuilder setLayoutEngine(IGraphLayoutEngine layoutEngine) {
+    public JeiRecipeGraphBuilder setLayoutEngine(IGraphLayoutEngine layoutEngine) {
         this.layoutEngine = layoutEngine;
         return this;
     }
 
-    public List<Widget> build() {
+
+    public List<IGraphNode> build() {
         return Collections.emptyList();
     }
 
     @SuppressWarnings("unchecked")
-    private <T> List<Widget> createAnaLayout() {
+    private <T> List<Widget> createLayout() {
         List<Widget> widgets = new ArrayList<>();
-        RecipeLayout<T> recipe = (RecipeLayout<T>) recipeLayout;
+        RecipeLayout<T> recipe = (RecipeLayout<T>) rootValue;
         //Start!
         IIngredientSupplier supplier = IngredientSupplierHelper.getIngredientSupplier(recipe.getRecipe(), recipe.getRecipeCategory(), registeredIngredients);
         if (supplier == null) {

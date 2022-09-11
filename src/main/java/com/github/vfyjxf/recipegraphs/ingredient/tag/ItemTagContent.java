@@ -10,10 +10,6 @@ public class ItemTagContent extends AbstractTagContent<Item> {
         super(tagKey, amount, percent);
     }
 
-    public ItemTagContent(TagKey<Item> tagKey, long amount) {
-        super(tagKey, amount);
-    }
-
     public ItemTagContent(IGraphTag<Item> graphTag) {
         super(graphTag);
     }

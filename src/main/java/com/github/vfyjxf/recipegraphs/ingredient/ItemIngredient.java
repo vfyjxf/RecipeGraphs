@@ -15,13 +15,9 @@ public class ItemIngredient extends AbstractIngredient<Item> {
         this.compoundTag = stack.getTag();
     }
 
-    public ItemIngredient(@NotNull ItemStack stack) {
-        super(stack.getItem(), stack.getCount());
-        this.compoundTag = stack.getTag();
-    }
-
     @Override
     public <C extends IGraphContent<Item>> boolean merge(@NotNull C c1, @NotNull C c2) {
         return false;
     }
+
 }

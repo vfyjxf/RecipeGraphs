@@ -1,10 +1,15 @@
 package com.github.vfyjxf.recipegraphs.api.ingredients;
 
+import com.github.vfyjxf.recipegraphs.ingredient.EmptyContent;
 import net.minecraft.nbt.CompoundTag;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public interface IGraphContent<T> {
+
+    static <T> IGraphContent<T> empty() {
+        return EmptyContent.EMPTY_CONTENT;
+    }
 
     long getAmount();
 

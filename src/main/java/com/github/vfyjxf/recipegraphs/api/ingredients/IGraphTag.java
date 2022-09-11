@@ -1,9 +1,14 @@
 package com.github.vfyjxf.recipegraphs.api.ingredients;
 
+import com.github.vfyjxf.recipegraphs.ingredient.tag.EmptyGraphTag;
 import net.minecraft.tags.TagKey;
 import org.jetbrains.annotations.NotNull;
 
 public interface IGraphTag<T> extends IGraphContent<TagKey<T>> {
+
+    static <T> IGraphTag<T> empty() {
+        return EmptyGraphTag.EMPTY_TAG;
+    }
 
     TagKey<T> getTagKey();
 
@@ -16,5 +21,9 @@ public interface IGraphTag<T> extends IGraphContent<TagKey<T>> {
     <C extends IGraphTag<T>> boolean merge(C c1, C c2);
 
     <C extends IGraphTag<T>> boolean mergeFuzzy(C c1, C c2);
+
+    record TagContext<T>(TagKey<T> tagKey, Class<T> context) {
+
+    }
 
 }

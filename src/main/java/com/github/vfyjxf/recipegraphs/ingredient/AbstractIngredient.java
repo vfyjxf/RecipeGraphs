@@ -6,20 +6,16 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractIngredient<T> implements IGraphIngredient<T> {
 
-    protected T content;
+    protected T ingredient;
     protected long amount;
     protected boolean isPercent;
     protected int percent;
 
-    public AbstractIngredient(T content, long amount, int percent) {
-        this.content = content;
+    public AbstractIngredient(T ingredient, long amount, int percent) {
+        this.ingredient = ingredient;
         this.amount = amount;
         this.percent = percent;
         this.isPercent = percent >= 1000;
-    }
-
-    public AbstractIngredient(T content, long amount) {
-        this(content, amount, 1000);
     }
 
     public AbstractIngredient(IGraphIngredient<T> graphIngredient) {
@@ -49,7 +45,7 @@ public abstract class AbstractIngredient<T> implements IGraphIngredient<T> {
 
     @Override
     public T get() {
-        return content;
+        return ingredient;
     }
 
     @Override

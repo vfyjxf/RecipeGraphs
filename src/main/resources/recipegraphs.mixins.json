@@ -7,6 +7,7 @@
     "MixinRecipeLayout"
   ],
   "mixins": [
+    "IngredientsAccessor",
     "RecipeLayoutAccessor",
     "RecipeLayoutBuilderAccessor",
     "RecipesGuiAccessor",
